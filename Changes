@@ -1,0 +1,6 @@
+1.0     Initial release
+        Formerly called Digest::DMAC
+        Digest::EMAC is the same as Digest::DMAC; only the name has
+        changed, to be consistent with what it is officially called
+        today
+
