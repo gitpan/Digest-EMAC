@@ -3,7 +3,7 @@
 use diagnostics;
 use strict;
 use warnings;
-use Digest::EMAC qw(dmac hexdigest base64digest);
+use Digest::EMAC qw(emac hexdigest base64digest);
 
 print "Enter key: ";
 my $key = <STDIN>;
@@ -17,7 +17,7 @@ print "Enter string: ";
 my $str = <STDIN>;
 chomp $str;
 
-my $mac = dmac($key, $cipher, $str);
+my $mac = emac($key, $cipher, $str);
 print hexdigest($mac), "\n";
 print base64digest($mac), "\n";
 

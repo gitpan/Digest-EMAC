@@ -46,7 +46,7 @@ The module Crypt::CBC is required, plus any block cipher that is
 capable of returning its block size when queried. RC5 is not supported,
 however, because its block size is variable.
 
-MIME::Base64 is required if a base64 encoding of output is desired.
+MIME::Base64 is also required for base64 encoding of output.
 
 LICENSE
 

@@ -8,9 +8,9 @@ use Crypt::CBC;
 use MIME::Base64;
 use Exporter;
 use vars qw($VERSION @EXPORT_OK @ISA);
-$VERSION = '1.0';
+$VERSION = '1.1';
 @ISA = ('Exporter');
-@EXPORT_OK = qw(dmac hexdigest base64digest);
+@EXPORT_OK = qw(emac hexdigest base64digest);
 
 sub createcipher
 {
@@ -31,7 +31,7 @@ sub createsubkey
     return $tempcipher->encrypt($data);
 }
 
-sub dmac
+sub emac
 {
     my ($key, $cipher, $inputdata) = @_;
 
@@ -87,7 +87,7 @@ Digest::EMAC
 
 =head1 EXAMPLE 1
 
-    use Digest::EMAC qw(dmac hexdigest base64digest);
+    use Digest::EMAC qw(emac hexdigest base64digest);
 
     print "Enter key: ";
     my $key = <STDIN>;
@@ -101,13 +101,13 @@ Digest::EMAC
     my $str = <STDIN>;
     chomp $str;
 
-    my $mac = dmac($key, $cipher, $str);
+    my $mac = emac($key, $cipher, $str);
     print hexdigest($mac), "\n";
     print base64digest($mac), "\n";
 
 =head1 EXAMPLE 2
 
-    use Digest::EMAC qw(dmac hexdigest base64digest);
+    use Digest::EMAC qw(emac hexdigest base64digest);
 
     print "Enter key: ";
     my $key = <STDIN>;
@@ -124,14 +124,14 @@ Digest::EMAC
     open F, $infile;
     my $data = <F>;
 
-    my $mac = dmac($key, $cipher, $data);
+    my $mac = emac($key, $cipher, $data);
     close F;
     print hexdigest($mac), "\n";
     print base64digest($mac), "\n";
 
 =head1 EXAMPLE 3
 
-    use Digest::EMAC qw(dmac hexdigest base64digest);
+    use Digest::EMAC qw(emac hexdigest base64digest);
 
     print "Enter key: ";
     my $key = <STDIN>;
@@ -143,7 +143,7 @@ Digest::EMAC
     local $/ = undef;
 
     while (<>) {
-        my $mac = dmac($key, $cipher, $_);
+        my $mac = emac($key, $cipher, $_);
         print hexdigest($mac), "\n";
     }
 
@@ -187,7 +187,7 @@ The module B<Crypt::CBC> is required, plus any block cipher that is
 capable of returning its block size when queried. B<RC5> is not
 supported, however, because its block size is variable.
 
-B<MIME::Base64> is required if a base64 encoding of output is desired.
+B<MIME::Base64> is also required for base64 encoding of output.
 
 =head1 LICENSE
 

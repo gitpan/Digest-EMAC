@@ -1,3 +1,6 @@
+1.1     MIME::Base64 is now required
+        Changed function "dmac" to "emac"
+
 1.0     Initial release
         Formerly called Digest::DMAC
         Digest::EMAC is the same as Digest::DMAC; only the name has
