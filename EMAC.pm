@@ -1,14 +1,14 @@
 package Digest::EMAC;
 
-use diagnostics;
+#use diagnostics;
 use strict;
-use warnings;
+#use warnings;
 use Carp;
 use Crypt::CBC;
 use MIME::Base64;
 use Exporter;
 use vars qw($VERSION @EXPORT_OK @ISA);
-$VERSION = '1.1';
+$VERSION = '1.2';
 @ISA = ('Exporter');
 @EXPORT_OK = qw(emac hexdigest base64digest);
 
@@ -159,7 +159,7 @@ Using the block cipher, a message is encrypted in B<CBC mode>. The last
 block is taken as the MAC of the message. For fixed-length messages,
 this method is provably secure. In reality, however, messages have
 arbitrary lengths, and this method is not secure. To make secure MACs
-for variable length messages, the last block is encrypted once again
+for variable length messages, the last block is encrypted once more
 with a different key. The security of this construction has been proved
 in the paper, ``CBC MAC for Real-Time Data Sources'' by Erez Petrank
 and Charles Rackoff. The security can be proved on the assumption that
